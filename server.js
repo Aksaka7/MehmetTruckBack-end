@@ -45,6 +45,24 @@ app.use('/api/payment/webhook', express.raw({ type: 'application/json' }));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Mehmet Truck Backend API is running',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
+
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
@@ -58,12 +76,27 @@ app.use('/api/admin/orders', adminOrderRoutes);
 app.use('/api/admin/users', adminUserRoutes);
 app.use('/api/upload', uploadRoutes);
 
+// 404 Handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Endpoint not found',
+    path: req.path
+  });
+});
+
 // ✅ Global error handler
 app.use((err, req, res, next) => {
   console.error('🔴 Global Error:', err);
-  res.status(err.status || 500).json({
-    message: err.message || 'Server Error',
-    stack: process.env.NODE_ENV === 'production' ? null : err.stack
+  
+  const statusCode = err.status || err.statusCode || 500;
+  const message = err.message || 'Internal Server Error';
+  
+  res.status(statusCode).json({
+    success: false,
+    message: message,
+    stack: process.env.NODE_ENV === 'production' ? undefined : err.stack,
+    error: process.env.NODE_ENV === 'production' ? undefined : err
   });
 });
 

@@ -1,11 +1,16 @@
 {
-  "name": "food-delivery-app",
+  "name": "mehmet-truck-backend",
   "version": "1.0.0",
-  "description": "Food Delivery App",
+  "description": "Mehmet Truck Food Delivery Backend API",
   "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -25,8 +30,16 @@
     "nodejs",
     "express",
     "mongodb",
-    "user-management"
+    "food-delivery",
+    "rest-api",
+    "stripe",
+    "jwt",
+    "authentication"
   ],
-  "author": "",
-  "license": "ISC"
+  "author": "Aksaka7",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aksaka7/MehmetTruckBack-end.git"
+  }
 }

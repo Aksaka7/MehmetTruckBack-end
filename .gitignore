@@ -1,0 +1,90 @@
+# ==========================================
+# MEHMET TRUCK BACKEND - .gitignore
+# ==========================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Build & Dist
+dist/
+build/
+.vercel/
+.next/
+out/
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Uploads & Media (if storing locally)
+uploads/
+public/uploads/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.pdf
+*.zip
+
+# Database
+*.sqlite
+*.db
+data/
+
+# OS Files
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Serverless
+.serverless/
+
+# Optional npm cache
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Production config backups
+config.backup.*
